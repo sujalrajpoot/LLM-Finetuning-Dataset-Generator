@@ -1,10 +1,31 @@
+# config.py
+
 from typing import (
-    Optional
+    Optional,
+    Dict
 )
+from dotenv import load_dotenv; load_dotenv()
 import random
 import ipaddress
+import os
 
-# Bold + Bright color codes (foreground)
+# --- API Configuration ---
+# You can set these in your environment variables or a .env file 
+
+DATASET_FILES_DIR = "./dataset_files" # important
+
+API_KEYS: Dict[str, Optional[str]] = {
+    "NVIDIA": os.environ.get("NVIDIA_API_KEY"),
+    "CEREBRAS": os.environ.get("CEREBRAS_API_KEY"),
+    "DEEPINFRA": os.environ.get("DEEPINFRA_API_KEY"),
+    "SAMBANOVA": os.environ.get("SAMBANOVA_API_KEY"),
+}
+
+"""
+Contains all the configs for the data generator
+"""
+
+# setting up theme
 BOLD_BRIGHT_RED     = "\033[1;91m"
 BOLD_BRIGHT_GREEN   = "\033[1;92m"
 BOLD_BRIGHT_YELLOW  = "\033[1;93m"
@@ -12,8 +33,6 @@ BOLD_BRIGHT_MAGENTA = "\033[1;95m"
 BOLD_BRIGHT_CYAN    = "\033[1;96m"
 
 RESET = "\033[0m"
-
-DATASET_FILES_DIR = "./dataset_files"
 
 FINGERPRINTS = {  
     "accept": [  
